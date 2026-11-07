@@ -3,6 +3,7 @@ import { config } from "./config.js";
 import { installErrorOverlay } from "./ui/errors.js";
 import { vertex, buildFragment } from "./render/shaders.js";
 import { Renderer } from "./render/renderer.js";
+import { AdaptiveScale } from "./render/adaptive.js";
 import { CameraState } from "./camera/state.js";
 import { Motion } from "./camera/motion.js";
 import { Controls } from "./input/controls.js";
@@ -37,6 +38,7 @@ const renderer = new Renderer({
 });
 const controls = new Controls(renderer.canvas, state, config);
 const motion = new Motion(config);
+const adaptive = new AdaptiveScale(config);
 
 let last = performance.now();
 
@@ -45,6 +47,7 @@ renderer.start(() => {
   const raw = (now - last) / 1000;
   last = now;
   const dt = Math.min(raw, 0.05);
+  adaptive.update(raw, renderer);
   controls.update(dt);
   motion.update(dt, controls.axes(), state);
   state.orthonormalize();
