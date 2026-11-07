@@ -9,7 +9,10 @@ import { Controls } from "./input/controls.js";
 
 const showError = installErrorOverlay(document.getElementById("error"));
 
-const fragment = buildFragment();
+const fragment = buildFragment({
+  MAX_STEPS: String(config.maxSteps),
+  FAR_L: config.farL.toFixed(1)
+});
 
 const state = new CameraState(config.startL);
 

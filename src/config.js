@@ -6,5 +6,7 @@ export const config = {
   lookSensitivity: 0.0022,
   rollSpeed: 1.2,
   speed: 7,
-  boost: 22
+  boost: 22,
+  maxSteps: 220,
+  farL: 48
 };
