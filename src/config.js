@@ -8,5 +8,7 @@ export const config = {
   speed: 7,
   boost: 22,
   maxSteps: 220,
-  farL: 48
+  farL: 48,
+  shellSpacing: 6,
+  shellMax: 42
 };

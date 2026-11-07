@@ -23,6 +23,7 @@ void main() {
          : (abs(uN.y) < 0.9 ? normalize(cross(uN, vec3(0.0, 1.0, 0.0))) : normalize(cross(uN, vec3(1.0, 0.0, 0.0))));
   float ps = atan(dt, dr);
   float phi = 0.0;
+  vec3 glow = vec3(0.0);
   bool escaped = false;
 
   for (int i = 0; i < MAX_STEPS; i++) {
@@ -36,6 +37,21 @@ void main() {
     float l1 = l + h * cos(sm);
     float phi1 = phi + h * sn / rm;
     float ps1 = ps - h * lm * sn / (rm * rm);
+
+    float k0 = floor(l / SHELL_SPACING);
+    float k1 = floor(l1 / SHELL_SPACING);
+    if (k0 != k1) {
+      float ls = SHELL_SPACING * max(k0, k1);
+      if (abs(ls) <= SHELL_MAX) {
+        float fr = (ls - l) / (l1 - l);
+        float ph = mix(phi, phi1, fr);
+        vec3 nc = cos(ph) * uN + sin(ph) * t;
+        bool throat = abs(ls) < 0.5;
+        float wgt = throat ? 1.0 : 0.5 * exp(-abs(ls) / 28.0);
+        vec3 tint = throat ? vec3(1.0, 0.85, 0.55) : (ls > 0.0 ? vec3(0.25, 0.7, 1.0) : vec3(1.0, 0.35, 0.6));
+        glow += tint * gridLine(nc) * wgt * 0.9;
+      }
+    }
 
     l = l1;
     phi = phi1;
@@ -55,5 +71,6 @@ void main() {
   } else {
     col = vec3(1.0, 0.85, 0.6) * 0.7;
   }
+  col += glow;
   gl_FragColor = vec4(tonemap(col), 1.0);
 }

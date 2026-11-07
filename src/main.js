@@ -11,7 +11,9 @@ const showError = installErrorOverlay(document.getElementById("error"));
 
 const fragment = buildFragment({
   MAX_STEPS: String(config.maxSteps),
-  FAR_L: config.farL.toFixed(1)
+  FAR_L: config.farL.toFixed(1),
+  SHELL_SPACING: config.shellSpacing.toFixed(1),
+  SHELL_MAX: config.shellMax.toFixed(1)
 });
 
 const state = new CameraState(config.startL);
