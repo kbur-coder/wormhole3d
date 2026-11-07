@@ -7,6 +7,7 @@ import { AdaptiveScale } from "./render/adaptive.js";
 import { CameraState } from "./camera/state.js";
 import { Motion } from "./camera/motion.js";
 import { Controls } from "./input/controls.js";
+import { Hud } from "./ui/hud.js";
 
 const showError = installErrorOverlay(document.getElementById("error"));
 
@@ -39,6 +40,7 @@ const renderer = new Renderer({
 const controls = new Controls(renderer.canvas, state, config);
 const motion = new Motion(config);
 const adaptive = new AdaptiveScale(config);
+const hud = new Hud(document.getElementById("hud"));
 
 let last = performance.now();
 
@@ -52,5 +54,6 @@ renderer.start(() => {
   motion.update(dt, controls.axes(), state);
   state.orthonormalize();
   uniforms.uL.value = state.l;
+  hud.update(state, motion.speed, renderer.scale);
   renderer.render();
 });

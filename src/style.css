@@ -44,3 +44,14 @@ canvas {
   opacity: 0.55;
   pointer-events: none;
 }
+
+#hud {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 14px 0;
+  color: var(--fg);
+  font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace;
+  white-space: pre;
+  pointer-events: none;
+}
