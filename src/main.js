@@ -4,6 +4,7 @@ import { installErrorOverlay } from "./ui/errors.js";
 import { vertex, buildFragment } from "./render/shaders.js";
 import { Renderer } from "./render/renderer.js";
 import { CameraState } from "./camera/state.js";
+import { Motion } from "./camera/motion.js";
 import { Controls } from "./input/controls.js";
 
 const showError = installErrorOverlay(document.getElementById("error"));
@@ -30,6 +31,7 @@ const renderer = new Renderer({
   onError: showError
 });
 const controls = new Controls(renderer.canvas, state, config);
+const motion = new Motion(config);
 
 let last = performance.now();
 
@@ -39,6 +41,7 @@ renderer.start(() => {
   last = now;
   const dt = Math.min(raw, 0.05);
   controls.update(dt);
+  motion.update(dt, controls.axes(), state);
   state.orthonormalize();
   uniforms.uL.value = state.l;
   renderer.render();

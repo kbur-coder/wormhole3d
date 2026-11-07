@@ -4,5 +4,7 @@ export const config = {
   startL: 16,
   throat: 2,
   lookSensitivity: 0.0022,
-  rollSpeed: 1.2
+  rollSpeed: 1.2,
+  speed: 7,
+  boost: 22
 };
