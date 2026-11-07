@@ -31,3 +31,16 @@ canvas {
   white-space: pre-wrap;
   z-index: 10;
 }
+
+#hint {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  color: var(--fg);
+  font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace;
+  text-align: center;
+  opacity: 0.55;
+  pointer-events: none;
+}
