@@ -1,0 +1,36 @@
+{
+  "name": "wormhole3d",
+  "version": "1.0.0",
+  "description": "Real-time GPU ray tracer of an Ellis wormhole: fly through the throat into another universe.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "keywords": [
+    "wormhole",
+    "ray-tracing",
+    "webgl",
+    "glsl",
+    "general-relativity",
+    "three.js",
+    "vite"
+  ],
+  "author": "kbur-coder",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbur-coder/wormhole3d.git"
+  }
+}
