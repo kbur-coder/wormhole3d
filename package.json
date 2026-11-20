@@ -31,6 +31,7 @@
   ],
   "author": "kbur-coder",
   "license": "MIT",
+  "homepage": "https://wormhole3d.netlify.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kbur-coder/wormhole3d.git"

@@ -2,9 +2,11 @@
 
 Real-time GPU ray tracer of an Ellis wormhole. Fly through the throat and look at a second universe, with every pixel tracing a light ray along geodesics of the wormhole metric.
 
-Russian: [docs/README.ru.md](docs/README.ru.md)
-
 ![status](https://github.com/kbur-coder/wormhole3d/actions/workflows/ci.yml/badge.svg)
+
+**Live demo: https://wormhole3d.netlify.app/** (needs a browser with WebGL2)
+
+Russian: [docs/README.ru.md](docs/README.ru.md)
 
 ## Features
 
